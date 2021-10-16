@@ -5,9 +5,6 @@ import {Layout} from '../layout'
 import {Post} from '../API/CallAPI'
 import {ENDPOINTS} from '../API/Endpoints'
 import {Reload} from '../App'
-import {
-  NavLink
-} from "react-router-dom"
 
 export default function Login() {
   const [email, setEmail] = useState("");
