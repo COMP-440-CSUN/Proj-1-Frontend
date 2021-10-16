@@ -7,7 +7,7 @@ import {
 
 
 import { Nav } from "./layout";
-import {Home, About, Contact, Login} from './pages'
+import {Home, About, Contact, Login, Register} from './pages'
 
 const IfTrue = function(boolean)
 {
@@ -18,7 +18,9 @@ const IfTrue = function(boolean)
     return (<Route path="/home"><Home/></Route>)
   }
   else
-    return (<Route path="/"><Login/></Route>)
+  {
+    return <div><Route path="/"><Login/></Route></div>
+  }
 }
 const Reload = function()
 {
@@ -36,6 +38,7 @@ function App() {
         <Route path="/contact">
           <Contact/>
         </Route>
+        <Route path="/register"><Register/></Route>
         <IfTrue boolean = {sessionStorage.getItem("auth")}/>
       </Switch>
     </Router>

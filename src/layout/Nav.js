@@ -36,13 +36,13 @@ const Nav = () => (
         ))
       }
       {
-        !sessionStorage.getItem("auth") !== "undefined" && 
+        sessionStorage.getItem("auth") === "undefined" && 
         <li>
           <NavLink exact to = "/" activeClassName="">Login</NavLink>
         </li>
       }
       {
-        !sessionStorage.getItem("auth") !== "undefined" && 
+        sessionStorage.getItem("auth") === "undefined" && 
         <li>
           <NavLink exact to = "/register" activeClassName="">Register</NavLink>
         </li>
