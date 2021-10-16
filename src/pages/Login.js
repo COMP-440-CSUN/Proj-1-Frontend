@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import {Layout} from '../layout'
 import {Post} from '../API/CallAPI'
 import {ENDPOINTS} from '../API/Endpoints'
+import {Reload} from '../App'
 import {
   NavLink
 } from "react-router-dom"
@@ -27,6 +28,7 @@ export default function Login() {
     });
     sessionStorage.setItem("token", token.token)
     sessionStorage.setItem("auth", token.auth)
+    Reload();
   }
 
   return (

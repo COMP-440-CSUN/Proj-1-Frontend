@@ -9,6 +9,21 @@ import {
 import { Nav } from "./layout";
 import {Home, About, Contact, Login} from './pages'
 
+const IfTrue = function(boolean)
+{
+  console.log(boolean)
+  if(boolean.boolean && boolean.boolean !== "undefined")
+  {
+    console.log("hello")
+    return (<Route path="/home"><Home/></Route>)
+  }
+  else
+    return (<Route path="/"><Login/></Route>)
+}
+const Reload = function()
+{
+  window.location.reload(false)
+}
 
 function App() {
   return (
@@ -21,19 +36,11 @@ function App() {
         <Route path="/contact">
           <Contact/>
         </Route>
-        {
-          sessionStorage.getItem("auth") && 
-          <Route path="/home">
-            <Home/>
-          </Route>
-        }
-        <Route path="/">
-          <Login/>
-        </Route>
+        <IfTrue boolean = {sessionStorage.getItem("auth")}/>
       </Switch>
     </Router>
   );
 }
 
-export default App;
+export {App, Reload};
 

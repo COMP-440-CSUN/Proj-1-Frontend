@@ -4,6 +4,8 @@ export const ENDPOINTS = {
 
   HOME: 'http://localhost:3000/api/auth/me',
 
-  LOGOUT: 'http://localhost:3000/api/auth/logout'
+  LOGOUT: 'http://localhost:3000/api/auth/logout',
+
+  REGISTER: 'http://localhost:3000/api/auth/register',
 
 };
