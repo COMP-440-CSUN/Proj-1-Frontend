@@ -20,6 +20,10 @@ const logout = async e => {
   Reload()
 }
 
+const checkAuth = () =>{
+  return (sessionStorage.getItem("auth") === "undefined" || !sessionStorage.getItem("auth"))
+}
+
 const Nav = () => (
   <nav>
     <ul>
@@ -36,19 +40,19 @@ const Nav = () => (
         ))
       }
       {
-        sessionStorage.getItem("auth") === "undefined" && 
+        checkAuth && 
         <li>
           <NavLink exact to = "/" activeClassName="">Login</NavLink>
         </li>
       }
       {
-        sessionStorage.getItem("auth") === "undefined" && 
+        checkAuth && 
         <li>
           <NavLink exact to = "/register" activeClassName="">Register</NavLink>
         </li>
       }
       {
-        sessionStorage.getItem("auth") !== "undefined" && 
+        !checkAuth && 
         <li>
           <p onClick={logout} ><NavLink exact to = "/" activeClassName="">Logout</NavLink></p>
         </li>
