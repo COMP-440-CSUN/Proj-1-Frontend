@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
-import {Layout} from '../layout'
 import {Post} from '../API/CallAPI'
 import {ENDPOINTS} from '../API/Endpoints'
 import {Reload} from '../App'
+import { 
+  Container,
+  Button,
+  Row, 
+  Col,
+  Form
+} from "react-bootstrap";
+import {
+  NavLink
+} from "react-router-dom"
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -30,30 +37,40 @@ export default function Login() {
 
   return (
     <div className="Login">
-      <Layout>
-        <Form onSubmit={handleSubmit}>
-          <Form.Group size="lg" controlId="email">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              autoFocus
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </Form.Group>
-          <Form.Group size="lg" controlId="password">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </Form.Group>
-          <Button block size="lg" type="submit" disabled={!validateForm()}>
-            Login
-          </Button>
-        </Form>
-      </Layout>
+      <Container className="container">
+        <Row>
+          <Col>
+          <h1>Sign In</h1>
+            <Form onSubmit={handleSubmit}>
+            <Form.Group size="lg" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                autoFocus
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+            <Form.Group size="lg" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+            <Button className="login-button" block size="md" type="submit" disabled={!validateForm()}>
+              Login
+            </Button>
+          </Form>
+          <div>Don't have an account?
+            <NavLink exact to = "/register" activeClassName="">Sign Up</NavLink>
+          </div>
+          </Col>
+        </Row>  
+      </Container>
     </div>
   );
 }

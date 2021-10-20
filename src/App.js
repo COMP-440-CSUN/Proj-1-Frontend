@@ -1,4 +1,5 @@
 import React from "react";
+import "./styles.scss"
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +8,7 @@ import {
 
 
 import { Nav } from "./layout";
-import {Home, About, Contact, Login, Register} from './pages'
+import {Home, Login, Register} from './pages'
 
 const IfTrue = function(boolean)
 {
@@ -30,14 +31,7 @@ const Reload = function()
 function App() {
   return (
     <Router>
-      <Nav/>
       <Switch>
-        <Route path="/about">
-          <About/>
-        </Route>
-        <Route path="/contact">
-          <Contact/>
-        </Route>
         <Route path="/register"><Register/></Route>
         <IfTrue boolean = {sessionStorage.getItem("auth")}/>
       </Switch>

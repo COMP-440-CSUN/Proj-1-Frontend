@@ -1,0 +1,40 @@
+.container {
+    width: 450px;  
+    overflow: hidden;  
+    margin: auto;  
+    padding: 50px;  
+    padding-top: 40px;
+    background: lightblue;  
+    border-radius: 15px ;  
+}
+.Register {
+    align-items: center;
+    overflow: hidden;  
+    margin: auto;  
+    padding: 100px;  
+    padding-top: 40px;
+}
+
+.Login {
+    align-items: center;
+    overflow: hidden;  
+    margin: auto;  
+    padding: 100px;  
+    padding-top: 40px;
+}
+
+.register-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 350px;  
+    height: 40px;
+    border: 5px;
+}
+
+.login-button {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 350px;  
+    height: 40px;
+    border: 5px;
+}
