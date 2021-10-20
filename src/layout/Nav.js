@@ -7,10 +7,7 @@ import {
   NavLink
 } from "react-router-dom"
 
-const navs = [
-  {path: '/contact', name: 'Contact'},
-  {path: '/about', name: 'About'},
-]
+const navs = []
 
 const logout = async e => {
   e.preventDefault();

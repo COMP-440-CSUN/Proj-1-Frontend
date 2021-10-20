@@ -1,5 +1,4 @@
 import React from "react";
-
 import {Layout} from '../layout'
 import {Get} from '../API/CallAPI'
 import {ENDPOINTS} from '../API/Endpoints'
