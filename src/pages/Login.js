@@ -40,7 +40,7 @@ export default function Login() {
       <Container className="container">
         <Row>
           <Col>
-          <h1>Sign In</h1>
+          <h1 className="header">Sign In</h1>
             <Form onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
               <Form.Label>Email</Form.Label>
@@ -62,10 +62,10 @@ export default function Login() {
               />
             </Form.Group>
             <Button className="login-button" block size="md" type="submit" disabled={!validateForm()}>
-              Login
+              Sign In
             </Button>
           </Form>
-          <div>Don't have an account?
+          <div className="noAccount">Don't have an account?
             <NavLink exact to = "/register" activeClassName="">Sign Up</NavLink>
           </div>
           </Col>

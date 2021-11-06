@@ -50,7 +50,7 @@ export default function Register() {
       <Container>
         <Row>
           <Col>
-            <h1>Sign Up</h1>
+            <h1 className="header">Sign Up</h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group size="lg" controlId="lname">
                 <Form.Label>Username</Form.Label>
@@ -108,7 +108,7 @@ export default function Register() {
                 Sign Up
               </Button>
             </Form>
-            <div>Already have an account?
+            <div className="yesAccount">Already have an account?
               <NavLink exact to = "/" activeClassName="">Sign In</NavLink>
             </div>  
           </Col>
