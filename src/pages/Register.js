@@ -56,7 +56,8 @@ export default function Register() {
       lName:lname,
       email:email,
       password:password
-    }).then(()=> console.log('Success'));
+    }).then(()=> 
+    console.log('Success'));
   }
 
   return (
@@ -118,7 +119,12 @@ export default function Register() {
                   onChange={(e) => setCpassword(e.target.value)}
                 />
               </Form.Group>
-              <Button className="register-button" block size="md" type="submit" disabled={!validateForm()}>
+              <Button 
+                className="register-button" 
+                block size="md" 
+                type="submit" 
+                disabled={!validateForm()}
+                >
                 Sign Up
               </Button>
             </Form>

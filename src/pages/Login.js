@@ -12,6 +12,8 @@ import {
 import {
   NavLink
 } from "react-router-dom"
+import { axios } from "axios";
+import { useHistory } from "react-router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -35,13 +37,26 @@ export default function Login() {
     Reload();
   }
 
+  let history = useHistory();
+
+  const userLogin = () => {
+    axios.post('http://localhost:5000/login', {
+      email    : this.state.email,
+      password : this.state.password,
+    })
+    .then(()=>  {
+      this.props.history.replace = ("/home");
+    });
+    console.log('Success');
+  };
+
   return (
     <div className="Login">
       <Container className="container">
         <Row>
           <Col>
           <h1 className="header">Sign In</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={userLogin}>
             <Form.Group size="lg" controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -61,7 +76,14 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <Button className="login-button" block size="md" type="submit" disabled={!validateForm()}>
+            <Button 
+              className="login-button" 
+              block size="md" 
+              type="submit" 
+              disabled={!validateForm()}
+              onClick={() => {
+                history.replace("/home");
+              }}>
               Sign In
             </Button>
           </Form>

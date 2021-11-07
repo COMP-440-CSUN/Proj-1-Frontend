@@ -6,7 +6,6 @@ import {
   Route,
 } from "react-router-dom"
 
-
 import { Nav } from "./layout";
 import {Home, Login, Register} from './pages'
 
@@ -33,6 +32,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/register"><Register/></Route>
+        <Route path="/home"><Home/></Route>
         <IfTrue boolean = {sessionStorage.getItem("auth")}/>
       </Switch>
     </Router>
