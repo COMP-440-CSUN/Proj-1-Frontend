@@ -1,26 +1,36 @@
 .container {
     width: 450px;  
     overflow: hidden;  
-    margin: auto;  
     padding: 50px;  
     padding-top: 40px;
     background: lightblue;  
     border-radius: 15px ;  
 }
-.Register {
-    align-items: center;
-    overflow: hidden;  
-    margin: auto;  
-    padding: 100px;  
-    padding-top: 40px;
+
+.Register { 
+    padding-top: 60px;
 }
 
 .Login {
-    align-items: center;
-    overflow: hidden;  
-    margin: auto;  
-    padding: 100px;  
-    padding-top: 40px;
+    padding-top: 60px;
+}
+
+.header {
+    text-align: center;
+}
+
+.noAccount {
+    text-align: center;
+
+}
+
+a:link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.yesAccount {
+    text-align: center;
 }
 
 .register-button {
