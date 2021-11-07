@@ -13,6 +13,8 @@ import {
   NavLink
 } from "react-router-dom"
 
+import axios from "axios";
+
 export default function Register() {
   const [username, setUsername] = useState("");
   const [fname, setFname] = useState("");
@@ -45,13 +47,25 @@ export default function Register() {
     }
   }
 
+  //This is the method i added in order to post the user to the db. it successfully works -David Quines
+
+  const addUser = () => {
+    axios.post('http://localhost:5000/register', {
+      username: username,
+      fName: fname,
+      lName:lname,
+      email:email,
+      password:password
+    }).then(()=> console.log('Success'));
+  }
+
   return (
     <div className="Register">
       <Container>
         <Row>
           <Col>
-            <h1 className="header">Sign Up</h1>
-            <Form onSubmit={handleSubmit}>
+            <h1>Sign Up</h1>
+            <Form onSubmit={addUser}>
               <Form.Group size="lg" controlId="lname">
                 <Form.Label>Username</Form.Label>
                 <Form.Control
