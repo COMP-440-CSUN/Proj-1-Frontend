@@ -16,8 +16,8 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    const data = await Get(ENDPOINTS.HOME)
-    this.setState({data: data.string})
+    // const data = await Get(ENDPOINTS.HOME)
+    // this.setState({data: data.string})
   }
   render() {
     const { data } = this.state;

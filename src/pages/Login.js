@@ -12,7 +12,7 @@ import {
 import {
   NavLink
 } from "react-router-dom"
-import { axios } from "axios";
+import axios from "axios";
 import { useHistory } from "react-router";
 
 export default function Login() {
@@ -39,15 +39,23 @@ export default function Login() {
 
   let history = useHistory();
 
-  const userLogin = () => {
-    axios.post('http://localhost:5000/login', {
-      email    : this.state.email,
-      password : this.state.password,
-    })
-    .then(()=>  {
-      this.props.history.replace = ("/home");
-    });
-    console.log('Success');
+  const userLogin = async e => {
+    e.preventDefault();
+    let response = null
+    try {
+      response = await axios.post('http://localhost:5000/login', {
+        email    : email,
+        password : password,
+      })
+      .then(()=>  {
+        this.props.history.replace = ("/home");
+      });
+      console.log(response);
+    } catch (error) {
+      console.error("Error response:");
+      console.error(response);
+      console.error(error);
+    }
   };
 
   return (
@@ -81,9 +89,10 @@ export default function Login() {
               block size="md" 
               type="submit" 
               disabled={!validateForm()}
-              onClick={() => {
-                history.replace("/home");
-              }}>
+              // onClick={() => {
+              //   history.replace("/home");
+              // }}
+              >
               Sign In
             </Button>
           </Form>
