@@ -6,14 +6,13 @@ import {
   Route,
 } from "react-router-dom"
 
-
 import { Nav } from "./layout";
 import {Home, Login, Register} from './pages'
 
-const IfTrue = function(boolean)
+const IfTrue = function(auth)
 {
-  console.log(boolean)
-  if(boolean.boolean && boolean.boolean !== "undefined")
+  console.log(auth)
+  if(auth == "loggedIn" && auth !== "undefined")
   {
     console.log("hello")
     return (<Route path="/home"><Home/></Route>)
@@ -33,7 +32,8 @@ function App() {
     <Router>
       <Switch>
         <Route path="/register"><Register/></Route>
-        <IfTrue boolean = {sessionStorage.getItem("auth")}/>
+        <Route path="/home"><Home/></Route>
+        <IfTrue auth = {sessionStorage.getItem("auth")}/>
       </Switch>
     </Router>
   );

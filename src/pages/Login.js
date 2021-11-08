@@ -12,28 +12,38 @@ import {
 import {
   NavLink
 } from "react-router-dom"
+import axios from "axios";
+import { useHistory } from "react-router";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function loginUser(credentials) {
-    return Post(ENDPOINTS.LOGIN, credentials)
-   }
-
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
-  const handleSubmit = async e => {
+
+  let history = useHistory();
+
+  const userLogin = async e => {
     e.preventDefault();
-    const token = await loginUser({
-      email,
-      password
-    });
-    sessionStorage.setItem("token", token.token)
-    sessionStorage.setItem("auth", token.auth)
-    Reload();
-  }
+    try {
+      await axios.post('http://localhost:5000/login', {
+        email    : email,
+        password : password,
+      })
+      .then((resp)=>  {
+        sessionStorage.setItem("token", resp.data.token)
+        sessionStorage.setItem("auth", 'loggedIn')
+        history.push("/home");
+      }, (error) => {
+        console.log(error);
+      });      
+    } catch (error) {
+      console.error("Error response:");
+      console.error(error);
+    }
+  };
 
   return (
     <div className="Login">
@@ -41,7 +51,7 @@ export default function Login() {
         <Row>
           <Col>
           <h1 className="header">Sign In</h1>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={userLogin}>
             <Form.Group size="lg" controlId="email">
               <Form.Label>Email</Form.Label>
               <Form.Control
@@ -61,7 +71,12 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <Button className="login-button" block size="md" type="submit" disabled={!validateForm()}>
+            <Button 
+              className="login-button" 
+              block size="md" 
+              type="submit" 
+              disabled={!validateForm()}
+              >
               Sign In
             </Button>
           </Form>
@@ -74,5 +89,3 @@ export default function Login() {
     </div>
   );
 }
-
-///https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data

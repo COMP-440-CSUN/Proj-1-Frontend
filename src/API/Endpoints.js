@@ -1,6 +1,6 @@
 export const ENDPOINTS = {
 
-  LOGIN: 'http://localhost:3000/api/auth/login',
+  LOGIN: 'http://localhost:5000/login',
 
   HOME: 'http://localhost:3000/api/auth/me',
 
