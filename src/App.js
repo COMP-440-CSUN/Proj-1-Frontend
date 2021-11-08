@@ -9,10 +9,10 @@ import {
 import { Nav } from "./layout";
 import {Home, Login, Register} from './pages'
 
-const IfTrue = function(boolean)
+const IfTrue = function(auth)
 {
-  console.log(boolean)
-  if(boolean.boolean && boolean.boolean !== "undefined")
+  console.log(auth)
+  if(auth == "loggedIn" && auth !== "undefined")
   {
     console.log("hello")
     return (<Route path="/home"><Home/></Route>)
@@ -33,7 +33,7 @@ function App() {
       <Switch>
         <Route path="/register"><Register/></Route>
         <Route path="/home"><Home/></Route>
-        <IfTrue boolean = {sessionStorage.getItem("auth")}/>
+        <IfTrue auth = {sessionStorage.getItem("auth")}/>
       </Switch>
     </Router>
   );

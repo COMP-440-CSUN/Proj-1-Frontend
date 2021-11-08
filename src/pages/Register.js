@@ -10,10 +10,12 @@ import {
   Form
 } from "react-bootstrap";
 import {
-  NavLink
+  NavLink,
+  Redirect
 } from "react-router-dom"
 
 import axios from "axios";
+import { useHistory } from "react-router";
 
 export default function Register() {
   const [username, setUsername] = useState("");
@@ -30,34 +32,22 @@ export default function Register() {
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
-  const handleSubmit = async e => {
+  let history = useHistory();
+
+  const addUser = async e => {
     e.preventDefault();
-    if(password === cpassword)
-    {
-      const token = await loginUser({
-        username,
-        fname,
-        lname,
-        email,
-        password
-      });
-      sessionStorage.setItem("token", token.token)
-      sessionStorage.setItem("auth", token.auth)
-      Reload();
-    }
-  }
-
-  //This is the method i added in order to post the user to the db. it successfully works -David Quines
-
-  const addUser = () => {
-    axios.post('http://localhost:5000/register', {
+    await axios.post('http://localhost:5000/register', {
       username: username,
       fName: fname,
       lName:lname,
       email:email,
       password:password
     }).then(()=> 
-    console.log('Success'));
+    {
+      console.log('Success');
+      window.alert("user created succesfuly")
+      history.push("/home");
+    })
   }
 
   return (
@@ -129,7 +119,7 @@ export default function Register() {
               </Button>
             </Form>
             <div className="yesAccount">Already have an account?
-              <NavLink exact to = "/" activeClassName="">Sign In</NavLink>
+              <NavLink exact to = "/home" activeClassName="home">Sign In</NavLink>
             </div>  
           </Col>
         </Row>

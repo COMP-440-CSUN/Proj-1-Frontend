@@ -19,41 +19,28 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function loginUser(credentials) {
-    return Post(ENDPOINTS.LOGIN, credentials)
-   }
-
   function validateForm() {
     return email.length > 0 && password.length > 0;
-  }
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const token = await loginUser({
-      email,
-      password
-    });
-    sessionStorage.setItem("token", token.token)
-    sessionStorage.setItem("auth", token.auth)
-    Reload();
   }
 
   let history = useHistory();
 
   const userLogin = async e => {
     e.preventDefault();
-    let response = null
     try {
-      response = await axios.post('http://localhost:5000/login', {
+      await axios.post('http://localhost:5000/login', {
         email    : email,
         password : password,
       })
-      .then(()=>  {
-        this.props.history.replace = ("/home");
-      });
-      console.log(response);
+      .then((resp)=>  {
+        sessionStorage.setItem("token", resp.data.token)
+        sessionStorage.setItem("auth", 'loggedIn')
+        history.push("/home");
+      }, (error) => {
+        console.log(error);
+      });      
     } catch (error) {
       console.error("Error response:");
-      console.error(response);
       console.error(error);
     }
   };
@@ -89,9 +76,6 @@ export default function Login() {
               block size="md" 
               type="submit" 
               disabled={!validateForm()}
-              // onClick={() => {
-              //   history.replace("/home");
-              // }}
               >
               Sign In
             </Button>
@@ -105,5 +89,3 @@ export default function Login() {
     </div>
   );
 }
-
-///https://stackoverflow.com/questions/47630163/axios-post-request-to-send-form-data
