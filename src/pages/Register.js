@@ -45,7 +45,7 @@ export default function Register() {
     }).then(()=> 
     {
       console.log('Success');
-      window.alert("user created succesfuly")
+      window.alert("User created succesfuly.")
       history.push("/home");
     })
   }

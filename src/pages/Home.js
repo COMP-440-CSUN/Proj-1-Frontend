@@ -5,8 +5,8 @@ import {ENDPOINTS} from '../API/Endpoints'
 import axios from 'axios'
 import { 
   Button,
-  Row, 
-  Col,
+  Navbar,
+  Container
 } from "react-bootstrap";
 
 class App extends React.Component {
@@ -16,11 +16,12 @@ class App extends React.Component {
     this.state = { data: null };
   }
 
-
   async componentDidMount() {
     // const data = await Get(ENDPOINTS.HOME)
     // this.setState({data: data.string})
   }
+
+  const
   render() {
     const { data } = this.state;
     const initDB = () => {
@@ -31,12 +32,15 @@ class App extends React.Component {
     }
 
     return (
-        <div className="db-button">
-          <h3>This is the Home Page!</h3>
-          <Button type="submit" onClick={initDB}>
+      <Navbar collapseOnSelect fixed='top' bg='dark'>
+          <h3 className="navTitle">Home</h3>
+          <Button className="initDB" type="submit" onClick={initDB}>
             Initialize Database
           </Button>
-        </div>
+          <Button className="newPost" type="submit">
+            Add a New Post
+          </Button>
+      </Navbar>
     );
   }
 }

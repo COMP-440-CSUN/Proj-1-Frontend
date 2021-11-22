@@ -5,9 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom"
-
-import { Nav } from "./layout";
-import {Home, Login, Register} from './pages'
+import {Home, Login, Register } from './pages'
 
 const IfTrue = function(auth)
 {
