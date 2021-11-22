@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom"
-import {Home, Login, Register } from './pages'
+import {Home, Login, Register, Blog } from './pages'
 
 const IfTrue = function(auth)
 {
@@ -31,6 +31,7 @@ function App() {
       <Switch>
         <Route path="/register"><Register/></Route>
         <Route path="/home"><Home/></Route>
+        <Route path="/blog"><Blog/></Route>
         <IfTrue auth = {sessionStorage.getItem("auth")}/>
       </Switch>
     </Router>

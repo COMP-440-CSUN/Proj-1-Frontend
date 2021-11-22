@@ -48,18 +48,44 @@ a:link {
     height: 40px;
     border: 5px;
 }
- .newPost {
-    background: none;
-    border: none;
- }
 
- .navTitle {
-    color: white;
+.homeTitle {
+    color: pink;
     margin-left: 20px;
- }
+}
 
- .initDB {
-    margin-left: 870px;
+.blogTitle {
+    color: pink;
+    margin-left: 20px;
+}
+
+.initDB {
+    color: lightblue;
+    margin-right: 22px;
+    margin-left: auto;
     background: none;
     border: none;
- }
+    font-weight: bold;
+}
+
+.blog {
+    color: lightblue;
+    margin-right: 22px;
+}
+
+.home {
+    color: lightblue;
+    margin-left: auto;
+    margin-right: 22px;
+}
+
+.Blog {
+    padding-left: 300px;
+    padding-right: 300px;
+    padding-top: 100px;
+}
+
+.signOutBtn {
+    color: lightblue;
+    padding-right: 20px;
+}

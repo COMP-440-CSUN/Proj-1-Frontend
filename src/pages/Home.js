@@ -6,8 +6,10 @@ import axios from 'axios'
 import { 
   Button,
   Navbar,
-  Container
 } from "react-bootstrap";
+import {
+  NavLink
+} from "react-router-dom"
 
 class App extends React.Component {
 
@@ -32,15 +34,16 @@ class App extends React.Component {
     }
 
     return (
-      <Navbar collapseOnSelect fixed='top' bg='dark'>
-          <h3 className="navTitle">Home</h3>
+      <div className="Home">
+        <Navbar collapseOnSelect fixed='top' bg='dark'>
+          <h4 className="homeTitle">HOME</h4>
           <Button className="initDB" type="submit" onClick={initDB}>
             Initialize Database
           </Button>
-          <Button className="newPost" type="submit">
-            Add a New Post
-          </Button>
-      </Navbar>
+          <NavLink exact to = "/blog" className="blog">Blog</NavLink>
+          <NavLink exact to = "/" className="signOutBtn">Sign Out</NavLink>
+        </Navbar>
+      </div>
     );
   }
 }
