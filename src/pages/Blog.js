@@ -1,40 +1,24 @@
 import React from "react";
+import { 
+  Form, 
+  Button, 
+  Navbar
+} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
-function Blog() {
+export default function Blog() {
 
-    const addPost = async e => {
-        e.preventDefault();
-        try {
-          await axios.post('http://localhost:5000/addPost', {
-            subject: subject,
-            description: description,
-          })
-          .then(()=>  {
-            history.push("/blog");
-          }, (error) => {
-            console.log(error);
-          });      
-        } catch (error) {
-          console.error("Error response:");
-          console.error(error);
-        }
-    };
-
-    return (
-        <div className="col-md-5">
-            <Form onSubmit={addPost}>
-                <div className="form-group">
-                  <input type="text" className="form-control" id="title" name="title" placeholder="Title" required />
-                </div>
-               
-                <div className="form-group">
-                <textarea className="form-control" type="textarea" id="subject" placeholder="Subject" maxlength="140" rows="7"></textarea>
-                </div>
-                  
-              <button type="button" id="submit" name="submit" className="btn btn-primary pull-right">Add Post</button>
-            </Form>
-        </div>
-    );
+  return (
+    <div className="Blog">
+      <Navbar collapseOnSelect fixed='top' bg='dark'>
+        <h4 className="blogTitle">BLOG</h4>
+        <NavLink exact to = "/home" className="home">Back to Home</NavLink>
+      </Navbar>
+        <Form>
+          <input className="form-control my-3" placeholder="Subject"/>
+          <textarea className="form-control my-3" placeholder="Description"></textarea>
+          <Button>Add New Post</Button>
+        </Form>
+    </div>
+  );
 }
-
-export default Blog;

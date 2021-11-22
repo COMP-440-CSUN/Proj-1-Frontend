@@ -119,7 +119,7 @@ export default function Register() {
               </Button>
             </Form>
             <div className="yesAccount">Already have an account?
-              <NavLink exact to = "/home" activeClassName="home">Sign In</NavLink>
+              <NavLink exact to = "/" activeClassName="">Sign In</NavLink>
             </div>  
           </Col>
         </Row>

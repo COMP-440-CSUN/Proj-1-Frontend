@@ -47,7 +47,13 @@ const Nav = () => (
         <li>
           <NavLink exact to = "/register" activeClassName="">Register</NavLink>
         </li>
-      }       
+      }
+      {
+        checkAuth && 
+        <li>
+          <NavLink exact to = "/blog" activeClassName="">Blog</NavLink>
+        </li>
+      }         
       {
         !checkAuth && 
         <li>
