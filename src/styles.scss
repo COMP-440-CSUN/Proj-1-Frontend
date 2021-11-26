@@ -1,95 +1,94 @@
-.container {
-    width: 450px;  
-    overflow: hidden;  
-    padding: 50px;  
-    padding-top: 40px;
-    background: lightblue;  
-    border-radius: 15px ;  
+.login-container {
+  width: 450px;
+  overflow: hidden;
+  padding: 50px;
+  padding-top: 40px;
+  background: lightblue;
+  border-radius: 15px;
 }
 
-.Register { 
-    padding-top: 60px;
+.Register {
+  padding-top: 60px;
 }
 
 .Login {
-    padding-top: 60px;
+  padding-top: 60px;
 }
 
 .header {
-    text-align: center;
+  text-align: center;
 }
 
 .noAccount {
-    text-align: center;
-
+  text-align: center;
 }
 
 a:link {
-    text-decoration: none;
-    font-weight: bold;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .yesAccount {
-    text-align: center;
+  text-align: center;
 }
 
 .register-button {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 350px;  
-    height: 40px;
-    border: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 350px;
+  height: 40px;
+  border: 5px;
 }
 
 .login-button {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    width: 350px;  
-    height: 40px;
-    border: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 350px;
+  height: 40px;
+  border: 5px;
 }
 
 .homeTitle {
-    color: pink;
-    margin-left: 20px;
+  color: pink;
+  margin-left: 20px;
 }
 
 .blogTitle {
-    color: pink;
-    margin-left: 20px;
+  color: pink;
+  margin-left: 20px;
 }
 
 .initDB {
-    color: lightblue;
-    margin-right: 22px;
-    margin-left: auto;
-    background: none;
-    border: none;
-    font-weight: bold;
+  color: lightblue;
+  margin-right: 22px;
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-weight: bold;
 }
 
 .blog {
-    color: lightblue;
-    margin-right: 22px;
+  color: lightblue;
+  margin-right: 22px;
 }
 
 .home {
-    color: lightblue;
-    margin-left: auto;
-    margin-right: 22px;
+  color: lightblue;
+  margin-left: auto;
+  margin-right: 22px;
 }
 
 .Blog {
-    padding-left: 400px;
-    padding-right: 400px;
-    padding-top: 120px;
+  padding-left: 400px;
+  padding-right: 400px;
+  padding-top: 120px;
 }
 
 .signOutBtn {
-    color: lightblue;
-    padding-right: 20px;
+  color: lightblue;
+  padding-right: 20px;
 }
 
 .postBtn {
-    margin-top: 20px;
+  margin-top: 20px;
 }

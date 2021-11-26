@@ -6,37 +6,35 @@ import {
   Route,
 } from "react-router-dom"
 import {Home, Login, Register, Blog } from './pages'
+import Nav from './layout/Nav';
 
-const IfTrue = function(auth)
-{
-  console.log(auth)
-  if(auth == "loggedIn" && auth !== "undefined")
+export default class App extends React.Component{
+  constructor(props)
   {
-    console.log("hello")
-    return (<Route path="/home"><Home/></Route>)
+    super(props)
+    this.state = {
+      isAuth: sessionStorage.getItem("auth") === 'true'
+    }
   }
-  else
-  {
-    return <div><Route path="/"><Login/></Route></div>
+
+  reload = () => {
+    this.setState({
+      isAuth: sessionStorage.getItem("auth") === 'true'
+    })
+  }
+
+  render(){
+    return (
+      <Router>
+        <Nav isAuth = {this.state.isAuth} reload = {this.reload} />
+        <Switch>
+          <Route path="/register"><Register/></Route>
+          <Route path="/home"><Home/></Route>
+          <Route path="/blog"><Blog/></Route>
+          {!this.state.isAuth && <Route path="/login"><Login reload = {this.reload}/></Route>}
+          {this.state.isAuth && <Route path="/home"><Home/></Route>}
+        </Switch>
+      </Router>
+    );
   }
 }
-const Reload = function()
-{
-  window.location.reload(false)
-}
-
-function App() {
-  return (
-    <Router>
-      <Switch>
-        <Route path="/register"><Register/></Route>
-        <Route path="/home"><Home/></Route>
-        <Route path="/blog"><Blog/></Route>
-        <IfTrue auth = {sessionStorage.getItem("auth")}/>
-      </Switch>
-    </Router>
-  );
-}
-
-export {App, Reload};
-
