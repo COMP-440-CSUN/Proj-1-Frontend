@@ -10,8 +10,9 @@ import {
   NavLink
 } from "react-router-dom"
 import axios from "axios";
+import { withRouter } from "react-router";
 
-export default class Login extends React.Component{
+class Login extends React.Component{
   constructor(props)
   {
     super(props)
@@ -38,9 +39,8 @@ export default class Login extends React.Component{
       .then((resp)=>  {
         sessionStorage.setItem("token", resp.data.token)
         sessionStorage.setItem("auth", 'loggedIn')
-        // history.push("/home");
-        this.props.reload()
         this.props.history.push("/home");
+        this.props.reload()
       }, (error) => {
         console.log(error);
       });      
@@ -95,3 +95,5 @@ export default class Login extends React.Component{
     );
   }
 }
+
+export default withRouter(Login);
