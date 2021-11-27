@@ -51,7 +51,7 @@ export default function Register() {
   }
 
   return (
-    <div className="Register">
+    <div className="register-container">
       <Container>
         <Row>
           <Col>
