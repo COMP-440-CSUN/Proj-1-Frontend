@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom"
-import {Home, Login, Register, Blog } from './pages'
+import {Home, Login, Register, Blog, Blogs, CreateBlog} from './pages'
 import Nav from './layout/Nav';
 
 export default class App extends React.Component{
