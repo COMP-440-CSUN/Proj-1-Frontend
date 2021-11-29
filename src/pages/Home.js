@@ -40,7 +40,7 @@ class App extends React.Component {
           <Button className="initDB" type="submit" onClick={initDB}>
             Initialize Database
           </Button>
-          <NavLink exact to = "/blog" className="blog">Blog</NavLink>
+          <NavLink exact to = "/blogs" className="blog">Blog</NavLink>
           <NavLink exact to = "/" className="signOutBtn">Sign Out</NavLink>
         </Navbar>
       </div>

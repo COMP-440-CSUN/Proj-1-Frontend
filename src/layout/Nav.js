@@ -69,7 +69,7 @@ export default class MainNav extends React.Component{
                   <p onClick={this.logout} ><NavLink exact to = "/" activeClassName="">Logout</NavLink></p>
                 </Nav.Link>
                 <Nav.Link>
-                  <NavLink exact to = "/blog" activeClassName="">Blogs</NavLink>
+                  <NavLink exact to = "/blogs" activeClassName="">Blogs</NavLink>
                 </Nav.Link>
               </Nav>
             )

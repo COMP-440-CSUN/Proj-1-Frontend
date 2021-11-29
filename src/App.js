@@ -30,7 +30,10 @@ export default class App extends React.Component{
         <Switch>
           <Route path="/register"><Register/></Route>
           <Route path="/home"><Home/></Route>
-          <Route path="/blog"><Blog/></Route>
+          <Route path="/CreateBlog"><CreateBlog/></Route>
+          <Route path="/blogs/:id" component = {Blog}></Route>
+          <Route path="/blogs"><Blogs/></Route>
+          <Route path="/create-blog"><CreateBlog/></Route>
           {!this.state.isAuth && <Route path="/login"><Login reload = {this.reload}/></Route>}
           {this.state.isAuth && <Route path="/home"><Home/></Route>}
         </Switch>

@@ -37,8 +37,8 @@ class Login extends React.Component{
         password : password,
       })
       .then((resp)=>  {
-        sessionStorage.setItem("token", resp.data.token)
         sessionStorage.setItem("auth", 'loggedIn')
+        sessionStorage.setItem("username", resp['data']['row'][0]['username'])
         this.props.history.push("/home");
         this.props.reload()
       }, (error) => {
