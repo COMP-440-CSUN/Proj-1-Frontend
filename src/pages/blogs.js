@@ -29,18 +29,18 @@ class Blogs extends React.Component{
   render(){
     return(
       <div>
-        <div className="game-container">
+        <div className="blog-container">
         {
           this.state.data ? (
             this.state.data['data']['rows'].map((blog) => (
                 <NavLink exact to = {"/blogs/" + blog.blogID} activeClassName="">
                   <div className="image-card">
                     <div className = "fill" >
-                      <h1>{blog.subject}</h1>
+                      <h2>{blog.subject}</h2>
                     </div>
-                      <h3>
+                      <h4>
                         {blog.description}
-                      </h3>
+                      </h4>
                       <p>
                         {blog.created_by} : {blog.creation_date}
                       </p>

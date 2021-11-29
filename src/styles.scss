@@ -104,3 +104,40 @@ a:link {
 .postBtn {
   margin-top: 20px;
 }
+
+.blog-container {
+  background: lightblue;
+  border-radius: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 200px;
+  margin-right: 200px;
+  padding-right: 40px;
+  padding-left: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.image-card {
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-left: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.fill {
+  font-weight: lighter;
+}
+
+.comment-container {
+  margin-left: 20px;
+  border-radius: 10px;
+}
+
+.submit-button {
+  margin-top: 25px;
+  width: 300px;
+  margin-left: 20px;
+}

@@ -9,8 +9,6 @@ import {
 
 } from "react-bootstrap";
 import axios from "axios";
-
-import 'react-dropdown/style.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
@@ -80,7 +78,7 @@ class Blog extends React.Component{
   render(){
     return(
       <div>
-        <div className="game-container">
+        <div className="blog-container">
           {
             this.state.data ? (
               <>
@@ -88,10 +86,10 @@ class Blog extends React.Component{
                   this.state.data['data']['rows'].map((blog) => (
                       <div className="image-card">
                         <div className = "fill" >
-                          <h1>{blog.subject}</h1>
+                          <h3>{blog.subject}</h3>
                         </div>
                         <div className = "fill" >
-                          <h2>{blog.description}</h2>
+                          <h4>{blog.description}</h4>
                         </div>
                       </div>
                   ))
@@ -100,17 +98,16 @@ class Blog extends React.Component{
                   this.state.commentData['data']['rows'].map((comment) => (
                       <div className="image-card">
                         <div className = "fill" >
-                          <h1>{comment.sentiment}</h1>
+                          <h3>{comment.sentiment}</h3>
                         </div>
                         <div className = "fill" >
-                          <h2>{comment.description}</h2>
+                          <h3>{comment.description}</h3>
                         </div>
                       </div>
                   ))
                 ):(<></>)}
-                <Form onSubmit={this.submitComment}>
+                <Form onSubmit={this.submitComment} className="comment-container">
                   <Form.Group size="s" controlId="comment">
-                    <Form.Label className="text-gray">Your Own Comment!</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="Enter comment"
@@ -118,7 +115,6 @@ class Blog extends React.Component{
                       onChange={(e) => this.setState({comment: e.target.value})}
                     />
                   </Form.Group>
-            
                   <DropdownButton 
                     onSelect={this.handleSentiment}
                     title="Sentiment">
@@ -129,16 +125,15 @@ class Blog extends React.Component{
                         Negative
                       </Dropdown.Item>
                   </DropdownButton> 
-              
-                  <Button
-                    className="login-button d-flex justify-content-center" 
+                </Form>
+                <Button
+                    className="submit-button"
                     block size="md" 
                     type="submit" 
                     disabled={!this.validateForm()}
                     >
                     Submit
-                  </Button>
-                </Form>
+                </Button>
               </>
               ):
               (
