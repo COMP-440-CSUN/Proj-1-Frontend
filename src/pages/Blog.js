@@ -56,18 +56,24 @@ class Blog extends React.Component{
       var sentiment = this.state.sentiment;
       console.log(sentiment);
       console.log(comment);
+      console.log(sessionStorage.getItem('username'));
+      var blogPoster = this.state.data['data']['rows'][0].created_by; 
       await axios.post('http://localhost:5000/postComment', {
         description    : comment,
         posted_by    : sessionStorage.getItem('username'),
         sentiment : sentiment,
-        blogID : this.state.pageURL
+        blogID : this.state.pageURL,
+        blogPoster : blogPoster
       })
       .then((resp)=>  {
-        console.log(resp);
+        window.alert(resp['data']['message']);
         this.props.history.push("/home"); // go to the same blog to "reload"
       }, (error) => {
         console.log(error);
-      });      
+      }); 
+
+   
+           
     } catch (error) {
       console.error("Error response:");
       console.error(error);

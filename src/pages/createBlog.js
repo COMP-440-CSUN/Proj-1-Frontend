@@ -26,14 +26,18 @@ export default function Blog() {
       username:  sessionStorage.getItem('username')
     }).then((resp)=>
     { 
-      console.log(resp);
-      var blogid = resp['data']['blogId'];
-      console.log(blogid);
-      var finalTags = tags.split(",");
-      //finalTags[i]
-      for(let i = 0; i < finalTags.length; i++){
-        createTags(finalTags[i], blogid);
+      if(resp['data']['message'] != null){
+        window.alert(resp['data']['message']);
+      }else{
+        var blogid = resp['data']['blogId'];
+        console.log(blogid);
+        var finalTags = tags.split(",");
+        //finalTags[i]
+        for(let i = 0; i < finalTags.length; i++){
+          createTags(finalTags[i], blogid);
+        }
       }
+      
       
     })
   }
