@@ -10,9 +10,9 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 
-import 'react-dropdown/style.css';
-import Dropdown from 'react-bootstrap/Dropdown';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 const options = ["positive","negative"];
 class Blog extends React.Component{
@@ -25,8 +25,10 @@ class Blog extends React.Component{
       pageURL: props.match.params.id,
       comment: "",
       sentiment: "",
+      isOpen: false
     }
   }
+  toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
 
   async getBlog(){
     console.log(this.state.pageURL);
@@ -52,6 +54,8 @@ class Blog extends React.Component{
     try {
       var comment = this.state.comment;
       var sentiment = this.state.sentiment;
+      console.log(sentiment);
+      console.log(comment);
       await axios.post('http://localhost:5000/postComment', {
         description    : comment,
         posted_by    : sessionStorage.getItem('username'),
@@ -59,6 +63,7 @@ class Blog extends React.Component{
         blogID : this.state.pageURL
       })
       .then((resp)=>  {
+        console.log(resp);
         this.props.history.push("/home"); // go to the same blog to "reload"
       }, (error) => {
         console.log(error);
@@ -118,10 +123,16 @@ class Blog extends React.Component{
                       onChange={(e) => this.setState({comment: e.target.value})}
                     />
                   </Form.Group>
-            
-                  <DropdownButton 
-                    onSelect={this.handleSentiment}
-                    title="Sentiment">
+                  {/* <Form.Select aria-label="Floating label select example" name="sentiment" onSelect={this.handleSentiment}>
+                      <option value="Positive">Positive</option>
+                      <option value="Negative">Negative</option>
+                     
+                    </Form.Select>
+                   */}
+                </Form>
+                <DropdownButton 
+                    title="Sentiment"
+                    onSelect={this.handleSentiment}>
                       <Dropdown.Item eventKey='Positive' href="#">
                         Positive
                       </Dropdown.Item>
@@ -129,16 +140,15 @@ class Blog extends React.Component{
                         Negative
                       </Dropdown.Item>
                   </DropdownButton> 
-              
-                  <Button
+                 <Button
                     className="login-button d-flex justify-content-center" 
                     block size="md" 
                     type="submit" 
                     disabled={!this.validateForm()}
+                    onClick={this.submitComment}
                     >
                     Submit
                   </Button>
-                </Form>
               </>
               ):
               (

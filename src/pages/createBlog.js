@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
+
 import { 
   Form, 
   Button, 
-  Navbar
+  Navbar,
+  CarouselItem
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router";
@@ -12,23 +14,42 @@ export default function Blog() {
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
-
+  const [blogID, setBlogID] =useState("")
+ 
   let history = useHistory();
 
   const createPost = async (e) => {
     e.preventDefault();
-    await axios.post('http://localhost:5000/postBlog', {
+     const blogdata = await axios.post('http://localhost:5000/postBlog', {
       subject: subject,
       description: description, 
-      tags: tags
-    }).then(()=>
+      username:  sessionStorage.getItem('username')
+    }).then((resp)=>
     { 
-      console.log('Success');
-      window.alert("New Post was created successfully.")
-      history.push("/home");
+      console.log(resp);
+      var blogid = resp['data']['blogId'];
+      console.log(blogid);
+      var finalTags = tags.split(",");
+      //finalTags[i]
+      for(let i = 0; i < finalTags.length; i++){
+        createTags(finalTags[i], blogid);
+      }
+      
+    })
+  }
+  const createTags = async(passedTag, passedBlogId) => {
+    console.log(passedBlogId);
+    console.log(passedTag);
+    await axios.post('http://localhost:5000/addTag', {
+      blogid: passedBlogId,
+      tag: passedTag
+    }).then((resp)=>{
+      console.log("tag posted");
     })
   }
 
+
+ 
   return (
     <div className="Blog">
       <Navbar collapseOnSelect fixed='top' bg='dark'>
@@ -57,15 +78,17 @@ export default function Blog() {
             </Form.Control>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Tags</Form.Label>
+            <Form.Label>Tasgs</Form.Label>
             <Form.Control
               autoFocus
-              placeholder="blockchain, bitcoin, decentralized"
+              placeholder="Blockchain is a buzz word nowadays..."
               value={tags}
               onChange={(e) => setTags(e.target.value)}
             >
             </Form.Control>
           </Form.Group>
+         
+
           <Button className="postBtn" type="submit">Add New Post</Button>
         </Form>
     </div>
