@@ -7,7 +7,6 @@ import {
   CarouselItem
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router";
 import axios from "axios";
 
 export default function Blog() {
@@ -17,9 +16,9 @@ export default function Blog() {
   const [blogID, setBlogID] =useState("")
  
   let history = useHistory();
-
-  const createPost = async (e) => {
+  createPost = async(e) => {
     e.preventDefault();
+
      const blogdata = await axios.post('http://localhost:5000/postBlog', {
       subject: subject,
       description: description, 
@@ -97,4 +96,6 @@ export default function Blog() {
         </Form>
     </div>
   );
+
 }
+export default CreateBlog;

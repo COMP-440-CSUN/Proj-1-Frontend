@@ -30,7 +30,6 @@ export default class App extends React.Component{
         <Switch>
           <Route path="/register"><Register/></Route>
           <Route path="/home"><Home/></Route>
-          <Route path="/CreateBlog"><CreateBlog/></Route>
           <Route path="/blogs/:id" component = {Blog}></Route>
           <Route path="/blogs"><Blogs/></Route>
           <Route path="/create-blog"><CreateBlog/></Route>
