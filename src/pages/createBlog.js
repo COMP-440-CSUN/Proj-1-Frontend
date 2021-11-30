@@ -15,8 +15,8 @@ export default function Blog() {
   const [tags, setTags] = useState("");
   const [blogID, setBlogID] =useState("")
  
-  let history = useHistory();
-  createPost = async(e) => {
+
+  const createPost = async(e) => {
     e.preventDefault();
 
      const blogdata = await axios.post('http://localhost:5000/postBlog', {
@@ -98,4 +98,4 @@ export default function Blog() {
   );
 
 }
-export default CreateBlog;
+
