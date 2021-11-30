@@ -15,8 +15,8 @@ export default function Blog() {
   const [tags, setTags] = useState("");
   const [blogID, setBlogID] =useState("")
  
-  let history = useHistory();
-  createPost = async(e) => {
+
+  const createPost = async(e) => {
     e.preventDefault();
 
      const blogdata = await axios.post('http://localhost:5000/postBlog', {
@@ -25,14 +25,18 @@ export default function Blog() {
       username:  sessionStorage.getItem('username')
     }).then((resp)=>
     { 
-      console.log(resp);
-      var blogid = resp['data']['blogId'];
-      console.log(blogid);
-      var finalTags = tags.split(",");
-      //finalTags[i]
-      for(let i = 0; i < finalTags.length; i++){
-        createTags(finalTags[i], blogid);
+      if(resp['data']['message'] != null){
+        window.alert(resp['data']['message']);
+      }else{
+        var blogid = resp['data']['blogId'];
+        console.log(blogid);
+        var finalTags = tags.split(",");
+        //finalTags[i]
+        for(let i = 0; i < finalTags.length; i++){
+          createTags(finalTags[i], blogid);
+        }
       }
+      
       
     })
   }
@@ -94,4 +98,4 @@ export default function Blog() {
   );
 
 }
-export default CreateBlog;
+

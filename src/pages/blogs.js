@@ -11,16 +11,19 @@ class Blogs extends React.Component{
     super(props)
     this.state={
       data: null,
+      tags: null
     }
   }
   async getBlogs(){
     const id = localStorage.getItem('id')
     const data = {id: id}
-    const albumData = await axios.get("http://localhost:5000/getAllBlogs");
-    console.log(albumData);
+    const blogData = await axios.get("http://localhost:5000/getAllBlogs");
+    console.log(blogData);
     this.setState({
-      data: albumData
+      data: blogData
     })
+
+    console.log(data);
   }
 
   componentDidMount(){
@@ -44,7 +47,6 @@ class Blogs extends React.Component{
                       <p>
                         {blog.created_by} : {blog.creation_date}
                       </p>
-                      
                   </div>
                 </NavLink>
             ))

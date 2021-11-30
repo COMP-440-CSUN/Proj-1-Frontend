@@ -12,14 +12,16 @@ export default class App extends React.Component{
   constructor(props)
   {
     super(props)
+    let auth = sessionStorage.getItem("auth") == null ? "" : sessionStorage.getItem("auth")
     this.state = {
-      isAuth: sessionStorage.getItem("auth") === 'true'
+      isAuth: auth.valueOf() == new String('loggedIn')
     }
   }
 
   reload = () => {
+    let auth = sessionStorage.getItem("auth") == null ? "" : sessionStorage.getItem("auth")
     this.setState({
-      isAuth: sessionStorage.getItem("auth") === 'true'
+      isAuth: auth.valueOf() == new String('loggedIn')
     })
   }
 
@@ -33,7 +35,7 @@ export default class App extends React.Component{
           <Route path="/blogs/:id" component = {Blog}></Route>
           <Route path="/blogs"><Blogs/></Route>
           <Route path="/create-blog"><CreateBlog/></Route>
-          {!this.state.isAuth && <Route path="/login"><Login reload = {this.reload}/></Route>}
+          {!this.state.isAuth && <Route path="/"><Login reload = {this.reload}/></Route>}
           {this.state.isAuth && <Route path="/home"><Home/></Route>}
         </Switch>
       </Router>

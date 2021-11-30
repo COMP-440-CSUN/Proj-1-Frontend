@@ -15,7 +15,7 @@ export default class MainNav extends React.Component{
     this.state = {
       isAuth : this.props.isAuth
     }
-    // this.logout = this.logout.bind(this)
+    this.logout = this.logout.bind(this)
   }
   componentDidUpdate(prevProps) {
     if(prevProps !== this.props)
@@ -23,15 +23,13 @@ export default class MainNav extends React.Component{
       this.setState({isAuth: this.props.isAuth});
     }
   }
-  //if we ever want to do a logout
-  // async logout(e){
-  //   e.preventDefault();
-  //   const data = Post(ENDPOINTS.LOGOUT);
-  //   window.sessionStorage.setItem("token", data.token)
-  //   window.sessionStorage.setItem("auth", data.auth)
-  //   console.log(this.props)
-  //   this.props.reload();
-  // }
+  //remove the auth and the token.
+  logout(){
+    window.sessionStorage.setItem("token", "")
+    window.sessionStorage.setItem("auth", "")
+    this.props.reload();
+    // console.log(this.props)
+  }
   render(){
     return(
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -40,8 +38,8 @@ export default class MainNav extends React.Component{
           <Nav className="me-auto">
             {
               this.state.isAuth &&
-              <Nav.Link href="">
-                <NavLink exact to = "/home" activeClassName="">Home</NavLink>
+              <Nav.Link>
+                <NavLink exact to = "/blogs" activeClassName="">Home</NavLink>
               </Nav.Link>
             }
             {
@@ -67,9 +65,6 @@ export default class MainNav extends React.Component{
               <Nav>
                 <Nav.Link>
                   <p onClick={this.logout} ><NavLink exact to = "/" activeClassName="">Logout</NavLink></p>
-                </Nav.Link>
-                <Nav.Link>
-                  <NavLink exact to = "/blogs" activeClassName="">Blogs</NavLink>
                 </Nav.Link>
               </Nav>
             )

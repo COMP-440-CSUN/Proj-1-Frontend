@@ -25,13 +25,25 @@ class Blog extends React.Component{
       pageURL: props.match.params.id,
       comment: "",
       sentiment: "",
-      isOpen: false
+      isOpen: false,
+      tags: null
     }
   }
   toggleOpen = () => this.setState({ isOpen: !this.state.isOpen });
 
   async getBlog(){
     console.log(this.state.pageURL);
+    const tagData = await axios.post('http://localhost:5000/getTagsbyBlogID',{
+      blogid : this.state.pageURL
+    })
+   
+    this.setState({
+      tags: tagData
+    })
+    // this.state.tags.map((tag) => {
+    //   console.log(tag.tag)
+    // })
+    console.log(this.state.tags)
     const blogData = await axios.post('http://localhost:5000/getBlogByID', {
       blogID : this.state.pageURL
     })
@@ -56,18 +68,24 @@ class Blog extends React.Component{
       var sentiment = this.state.sentiment;
       console.log(sentiment);
       console.log(comment);
+      console.log(sessionStorage.getItem('username'));
+      var blogPoster = this.state.data['data']['rows'][0].created_by; 
       await axios.post('http://localhost:5000/postComment', {
         description    : comment,
         posted_by    : sessionStorage.getItem('username'),
         sentiment : sentiment,
-        blogID : this.state.pageURL
+        blogID : this.state.pageURL,
+        blogPoster : blogPoster
       })
       .then((resp)=>  {
-        console.log(resp);
+        window.alert(resp['data']['message']);
         this.props.history.push("/home"); // go to the same blog to "reload"
       }, (error) => {
         console.log(error);
-      });      
+      }); 
+
+   
+           
     } catch (error) {
       console.error("Error response:");
       console.error(error);
@@ -82,6 +100,7 @@ class Blog extends React.Component{
   componentDidMount(){
     this.getBlog();
   }
+
   render(){
     return(
       <div>
@@ -89,6 +108,18 @@ class Blog extends React.Component{
           {
             this.state.data ? (
               <>
+                  <div className = "fill">
+                    {
+                      this.state.tags['data']['rows'].map((tag) => {
+                        return(
+                            <h1>
+                              {tag['tag']}
+                            </h1>
+                        )
+  
+                      })
+                    }
+                  </div>
                 {
                   this.state.data['data']['rows'].map((blog) => (
                       <div className="image-card">
