@@ -5,6 +5,9 @@
   padding-top: 40px;
   background: lightblue;
   border-radius: 15px;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .register-container {
@@ -47,7 +50,7 @@ a:link {
 .register-button {
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 350px;
+  width: 325px;
   height: 40px;
   border: 5px;
 }
@@ -55,22 +58,22 @@ a:link {
 .login-button {
   margin-top: 20px;
   margin-bottom: 20px;
-  width: 350px;
+  width: 325px;
   height: 40px;
   border: 5px;
 }
 
-.homeTitle {
+.home-title {
   color: pink;
   margin-left: 20px;
 }
 
-.blogTitle {
+.blog-title {
   color: pink;
   margin-left: 20px;
 }
 
-.initDB {
+.init-DB {
   color: lightblue;
   margin-right: 22px;
   margin-left: auto;
@@ -96,7 +99,7 @@ a:link {
   padding-top: 120px;
 }
 
-.signOutBtn {
+.sign-out-btn {
   color: lightblue;
   padding-right: 20px;
 }
@@ -108,8 +111,6 @@ a:link {
 .blog-container {
   background: lightblue;
   border-radius: 10px;
-  margin-top: 50px;
-  margin-bottom: 50px;
   margin-left: 200px;
   margin-right: 200px;
   padding-right: 40px;

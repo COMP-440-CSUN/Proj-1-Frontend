@@ -1,10 +1,8 @@
 import React, { useState, Component } from "react";
-
 import { 
   Form, 
   Button, 
   Navbar,
-  CarouselItem
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -14,11 +12,9 @@ export default function Blog() {
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
   const [blogID, setBlogID] =useState("")
- 
 
   const createPost = async(e) => {
     e.preventDefault();
-
      const blogdata = await axios.post('http://localhost:5000/postBlog', {
       subject: subject,
       description: description, 
@@ -36,10 +32,9 @@ export default function Blog() {
           createTags(finalTags[i], blogid);
         }
       }
-      
-      
     })
   }
+
   const createTags = async(passedTag, passedBlogId) => {
     console.log(passedBlogId);
     console.log(passedTag);
@@ -51,12 +46,10 @@ export default function Blog() {
     })
   }
 
-
- 
   return (
     <div className="Blog">
       <Navbar collapseOnSelect fixed='top' bg='dark'>
-        <h4 className="blogTitle">BLOG</h4>
+        <h4 className="blog-title">BLOG</h4>
         <NavLink exact to = "/home" className="home">Back to Home</NavLink>
       </Navbar>
         <Form onSubmit={createPost}>
@@ -96,6 +89,5 @@ export default function Blog() {
         </Form>
     </div>
   );
-
 }
 
