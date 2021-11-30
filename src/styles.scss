@@ -93,6 +93,11 @@ a:link {
   margin-right: 22px;
 }
 
+.new-blog {
+  color: lightblue;
+  margin-right: 22px;
+}
+
 .Blog {
   padding-left: 400px;
   padding-right: 400px;
@@ -137,8 +142,33 @@ a:link {
   border-radius: 10px;
 }
 
+
+
 .submit-button {
   margin-top: 25px;
   width: 300px;
   margin-left: 20px;
+}
+
+.create-blog-btn {
+  padding-left: 100px;
+}
+
+.drop-down {
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+.tags-container {
+  padding: 2px 20px;
+}
+
+.card{
+  margin-right: 5px;
+  padding: 5px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5%;
+  float: left;
+  color: deeppink;
 }

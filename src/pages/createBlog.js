@@ -6,12 +6,14 @@ import {
 } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router";
 
 export default function Blog() {
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState("");
   const [blogID, setBlogID] =useState("")
+  let history = useHistory();
 
   const createPost = async(e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export default function Blog() {
         for(let i = 0; i < finalTags.length; i++){
           createTags(finalTags[i], blogid);
         }
+        history.push("/blogs");
       }
     })
   }
@@ -50,7 +53,7 @@ export default function Blog() {
     <div className="Blog">
       <Navbar collapseOnSelect fixed='top' bg='dark'>
         <h4 className="blog-title">BLOG</h4>
-        <NavLink exact to = "/home" className="home">Back to Home</NavLink>
+        <NavLink exact to = "/blogs" className="home">Back to Home</NavLink>
       </Navbar>
         <Form onSubmit={createPost}>
           <Form.Group>
@@ -74,7 +77,7 @@ export default function Blog() {
             </Form.Control>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Tasgs</Form.Label>
+            <Form.Label>Tags</Form.Label>
             <Form.Control
               autoFocus
               placeholder="Blockchain is a buzz word nowadays..."

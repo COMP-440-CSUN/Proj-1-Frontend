@@ -32,6 +32,9 @@ class Blogs extends React.Component{
   render(){
     return(
       <div>
+        <div className="d-flex justify-content-center p-2 py-3">
+          <NavLink exact to = {"/create-blog"} activeClassName=""><h3 className="text-light bg-dark p-3 rounded">Create Blog</h3></NavLink>
+        </div>
         <div className="blog-container">
         {
           this.state.data ? (
@@ -39,13 +42,13 @@ class Blogs extends React.Component{
                 <NavLink exact to = {"/blogs/" + blog.blogID} activeClassName="">
                   <div className="image-card">
                     <div className = "fill" >
-                      <h2>{blog.subject}</h2>
+                      <h4>{blog.subject}</h4>
                     </div>
-                      <h4>
-                        {blog.description}
-                      </h4>
                       <p>
-                        {blog.created_by} : {blog.creation_date}
+                        {blog.description}
+                      </p>
+                      <p>
+                        {blog.created_by} : {blog.creation_date.substring(0,10)}
                       </p>
                   </div>
                 </NavLink>

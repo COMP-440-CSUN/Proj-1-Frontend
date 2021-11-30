@@ -46,7 +46,7 @@ export default function Register() {
     {
       console.log('Success');
       window.alert("User created succesfuly.")
-      history.push("/home");
+      history.push("/blogs");
     })
   }
 

@@ -62,7 +62,6 @@ class Blog extends React.Component{
   }
   
   submitComment = async(e) => {
-    e.preventDefault();
     try {
       var comment = this.state.comment;
       var sentiment = this.state.sentiment;
@@ -79,7 +78,7 @@ class Blog extends React.Component{
       })
       .then((resp)=>  {
         window.alert(resp['data']['message']);
-        this.props.history.push("/home"); // go to the same blog to "reload"
+        window.location.reload(false);
       }, (error) => {
         console.log(error);
       }); 
@@ -108,38 +107,39 @@ class Blog extends React.Component{
           {
             this.state.data ? (
               <>
-                  <div className = "fill">
-                    {
-                      this.state.tags['data']['rows'].map((tag) => {
-                        return(
-                            <h1>
-                              {tag['tag']}
-                            </h1>
-                        )
-  
-                      })
-                    }
-                  </div>
                 {
                   this.state.data['data']['rows'].map((blog) => (
                       <div className="image-card">
                         <div className = "fill" >
-                          <h3>{blog.subject}</h3>
+                          <h5>{blog.subject}</h5>
                         </div>
                         <div className = "fill" >
-                          <h4>{blog.description}</h4>
+                          <p>{blog.description}</p>
                         </div>
                       </div>
                   ))
                 }
+                <div className = "tags-container">
+                  {
+                    this.state.tags['data']['rows'].map((tag) => {
+                      return(
+                        <p class='card'>{tag['tag']}</p>
+                      )
+                    })
+                  }
+                </div>
+                <h5 style={{clear: "both"}}>Comments:</h5>
                 {this.state.commentData ? (
                   this.state.commentData['data']['rows'].map((comment) => (
                       <div className="image-card">
                         <div className = "fill" >
-                          <h3>{comment.sentiment}</h3>
+                          <p>{comment.description}</p>
                         </div>
                         <div className = "fill" >
-                          <h3>{comment.description}</h3>
+                          <p>{comment.sentiment}</p>
+                        </div>
+                        <div className = "fill" >
+                          <p>Posted by: {comment.posted_by}</p>
                         </div>
                       </div>
                   ))
@@ -162,26 +162,25 @@ class Blog extends React.Component{
                    */}
                 </Form>
                 <DropdownButton 
-                    title="Sentiment"
-                    onSelect={this.handleSentiment}>
-                      <Dropdown.Item eventKey='Positive' href="#">
-                        Positive
-                      </Dropdown.Item>
-                      <Dropdown.Item eventKey='Negative' href="#">
-                        Negative
-                      </Dropdown.Item>
-                  </DropdownButton> 
-
-                 <Button
-                    className="login-button d-flex justify-content-center" 
-                    block size="md" 
-                    type="submit" 
-                    disabled={!this.validateForm()}
-                    onClick={this.submitComment}
-                    >
-                    Submit
-
-                  </Button>
+                  className="drop-down"
+                  title="Sentiment"
+                  onSelect={this.handleSentiment}>
+                    <Dropdown.Item eventKey='Positive' href="#">
+                      Positive
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey='Negative' href="#">
+                      Negative
+                    </Dropdown.Item>
+                </DropdownButton> 
+                <Button
+                  className="submit-button" 
+                  block size="md" 
+                  type="submit" 
+                  disabled={!this.validateForm()}
+                  onClick={this.submitComment}
+                  >
+                  Submit
+                </Button>
               </>
               ):
               (
@@ -190,9 +189,6 @@ class Blog extends React.Component{
                 </>
             )
           }
-        </div>
-        <div className="d-flex justify-content-center p-2 fixed-bottom position-fixed py-5">
-          <NavLink exact to = {"/create-blog"} activeClassName="">Create Blog</NavLink>
         </div>
       </div>
     )
