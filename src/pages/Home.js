@@ -36,12 +36,12 @@ class App extends React.Component {
     return (
       <div className="Home">
         <Navbar collapseOnSelect fixed='top' bg='dark'>
-          <h4 className="homeTitle">HOME</h4>
-          <Button className="initDB" type="submit" onClick={initDB}>
+          <h4 className="home-title">HOME</h4>
+          <Button className="init-DB" type="submit" onClick={initDB}>
             Initialize Database
           </Button>
           <NavLink exact to = "/blogs" className="blog">Blog</NavLink>
-          <NavLink exact to = "/" className="signOutBtn">Sign Out</NavLink>
+          <NavLink exact to = "/" className="sign-out-btn">Sign Out</NavLink>
         </Navbar>
       </div>
     );

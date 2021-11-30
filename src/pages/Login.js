@@ -51,8 +51,8 @@ class Login extends React.Component{
   };
   render(){
     return (
-      <div className="Login">
-        <Container className="login-container">
+      <div className="login-container">
+        <Container>
           <Row>
             <Col>
             <h1 className="header">Sign In</h1>
