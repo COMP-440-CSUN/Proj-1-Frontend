@@ -86,8 +86,6 @@ export default function Blog() {
             >
             </Form.Control>
           </Form.Group>
-         
-
           <Button className="postBtn" type="submit">Add New Post</Button>
         </Form>
     </div>
