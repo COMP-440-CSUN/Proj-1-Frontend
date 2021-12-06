@@ -5,7 +5,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom"
-import {Home, Login, Register, Blog, Blogs, CreateBlog} from './pages'
+import {Home, Login, Register, Blog, Blogs, CreateBlog, Profile} from './pages'
 import Nav from './layout/Nav';
 
 export default class App extends React.Component{
@@ -35,6 +35,7 @@ export default class App extends React.Component{
           <Route path="/blogs/:id" component = {Blog}></Route>
           <Route path="/blogs"><Blogs/></Route>
           <Route path="/create-blog"><CreateBlog/></Route>
+          <Route path="/profile"><Profile/></Route>
           {!this.state.isAuth && <Route path="/"><Login reload = {this.reload}/></Route>}
           {this.state.isAuth && <Route path="/home"><Home/></Route>}
         </Switch>
