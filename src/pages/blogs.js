@@ -1,7 +1,7 @@
 import React from "react";
 import { Get } from "../API/CallAPI";
 import {
-  NavLink
+  NavLink, Link
 } from "react-router-dom"
 import axios from "axios";
 
@@ -47,8 +47,13 @@ class Blogs extends React.Component{
                       <p>
                         {blog.description}
                       </p>
-                      <p>
-                        {blog.created_by} : {blog.creation_date.substring(0,10)}
+                      <p> 
+                      <NavLink exact to = {
+                       "/profile/" + blog.created_by
+                      } 
+                        activeClassName=""> {blog.created_by}
+                        </NavLink>
+                        : {blog.creation_date.substring(0,10)}
                       </p>
                   </div>
                 </NavLink>
