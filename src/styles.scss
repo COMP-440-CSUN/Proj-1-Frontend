@@ -170,3 +170,16 @@ a:link {
   float: left;
   color: deeppink;
 }
+
+.profile-container{
+  margin: auto;
+  width: 50%;
+  justify-content: center;
+  text-align: center;
+  padding:20px;
+}
+.profile-picture{
+  height: 200px;
+  width: 200px;
+  border-radius: 30px;
+}

@@ -33,7 +33,7 @@ class Profile extends React.Component{
       leader_name: toFollow,
       follower_name: sessionStorage.getItem('username'),
     })
-    console.log(follow);
+    window.alert(follow['data']['message']);
   }
 
   async getBlogsByUser(){
@@ -48,14 +48,30 @@ class Profile extends React.Component{
     console.log(blogsOfUser);
     console.log(this.blogsData);
   }
+
+  async postitiveBlogs(){
+
+    const username = this.state.user; //this field needs to have the username of the profile page visited
+    const positive = await axios.post('http://localhost:5000/getMostPositiveBlogs', {
+      username: username
+    })
+    if(positive['data']['rows'].length ==0 ){
+      window.alert(this.state.user + " has no blogs with postive comments only");
+    }
+  }
+
   componentDidMount(){
     this.getBlogsByUser();
   }
   render(){
     return(
       <div>
-        <p>Profile Page</p>
-        <Button onClick={this.followUser()}>Follow</Button>
+        <div class="profile-container">
+          <img class="profile-picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></img>
+          <p>{this.state.user}</p>
+          <Button onClick={() => this.postitiveBlogs()}>Postitive Blogs</Button>
+          <Button onClick={() => this.followUser()}>Follow</Button>
+        </div>
         <div className="blog-container">
         {
           this.state.blogsData ? (
