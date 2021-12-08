@@ -56,6 +56,12 @@ export default class MainNav extends React.Component{
               </Nav.Link>
             }
             {
+              this.state.isAuth &&
+              <Nav.Link>
+                <NavLink exact to = "/user" activeClassName="">Users</NavLink>
+              </Nav.Link>
+            }
+            {
             navs.map(navItem => (
               <Nav.Link href="">
                 <NavLink exact to = {navItem.path} activeClassName="">{navItem.name}</NavLink>

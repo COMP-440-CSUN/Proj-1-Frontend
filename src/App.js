@@ -6,7 +6,9 @@ import {
   Route,
 } from "react-router-dom"
 import {Home, Login, Register, Blog, Blogs, CreateBlog, Profile} from './pages'
+
 import Nav from './layout/Nav';
+import Users from "./pages/user";
 
 export default class App extends React.Component{
   constructor(props)
@@ -37,6 +39,7 @@ export default class App extends React.Component{
           <Route path="/create-blog"><CreateBlog/></Route>
           <Route path="/profile/:name" component = {Profile}></Route>
           <Route path="/profile" component = {Profile}></Route>
+          <Route path="/user" component={Users}></Route>
           {!this.state.isAuth && <Route path="/"><Login reload = {this.reload}/></Route>}
           {this.state.isAuth && <Route path="/home"><Home/></Route>}
         </Switch>
