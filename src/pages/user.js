@@ -93,7 +93,7 @@ class Users extends React.Component{
   render(){
     return(
       <div>
-        <h1>This page displays information about the users</h1>
+        <h1 className="blog-container py-5">This page displays information about the users</h1>
         <div className="blog-container">
         <h4>Most Blogs Posted On 10/10/21</h4>
         {
@@ -172,7 +172,7 @@ class Users extends React.Component{
             )
           }
         </div>
-        <div>
+        <div className="blog-container my-5">
           <h4>Find Mutual Followers Between Two Users</h4>
         <Form onSubmit={this.getSameFollowers}>
           <Form.Group>

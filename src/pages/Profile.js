@@ -53,6 +53,13 @@ class Profile extends React.Component{
     if(positive['data']['rows'].length ==0 ){
       window.alert(this.state.user + " has no blogs with postive comments only");
     }
+    else{
+      this.setState({
+        blogsData: positive
+      })
+    }
+
+
   }
 
   componentDidMount(){
@@ -62,12 +69,20 @@ class Profile extends React.Component{
     return(
       <div>
         <div class="profile-container">
+         
           <img class="profile-picture" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></img>
-          <p>{this.state.user}</p>
-          <Button onClick={() => this.postitiveBlogs()}>Postitive Blogs</Button>
-          <Button onClick={() => this.followUser()}>Follow</Button>
+          <div class="column-wide">
+            <p style={{fontWeight:"bold", fontSize: 50}}>{this.state.user}</p>
+            <Button onClick={() => this.followUser()}>Follow</Button>
+          </div>
+          
         </div>
+   
         <div className="blog-container">
+          <div className="d-flex justify-content-center pb-3">
+            <Button onClick={() => this.postitiveBlogs()} >Positive Blogs</Button>
+          </div>
+        
         {
           this.state.blogsData && 
           this.state.blogsData['data']['rows'].length > 0 ? (
